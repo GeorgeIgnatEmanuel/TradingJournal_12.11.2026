@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080c14;
+  --color-surface: #121924;
+  --color-raised: #1a2333;
+  --color-fg: #f3f6fb;
+  --color-muted: #8e9aaf;
+  --color-faint: #5e6b80;
+  --color-accent: #2ee59d;
+  --color-danger: #ff5d73;
+  --color-line: #243044;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1.15rem;
+  --radius-control: 0.85rem;
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    min-height: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+@layer components {
+  .field {
+    width: 100%;
+    border-radius: var(--radius-control);
+    background: var(--color-bg);
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--color-fg);
+    box-shadow: var(--shadow-card);
+    outline: none;
+  }
+
+  .field:focus {
+    box-shadow: 0 0 0 1px var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
